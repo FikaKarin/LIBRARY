@@ -22,7 +22,7 @@ class Book extends React.Component {
 
     published: {
       //checks that field it 4 digits
-      rule: /^\d{4}\$/,
+      rule: /^\d{4}$/,
       message: 'Published date field must be a 4 digit year'
     }
   }
@@ -35,7 +35,7 @@ class Book extends React.Component {
 
     //assigns to the state
     this.state = {
-      id: props.match.params.is,
+      id: props.match.params.id,
       author: '',
       title: '',
       published: '',
@@ -45,7 +45,7 @@ class Book extends React.Component {
     //binds the book objekt to the handlechange funktion
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  };
 
   componentDidMount() {
     if (!this.state.id) {
@@ -71,19 +71,19 @@ class Book extends React.Component {
   }
 
   validate() {
-    for(let field in this.validation) {
+    for (let field in this.validation) {
       const rule = this.validation[field].rule;
       const message = this.validation[field].message;
       const value = this.state[field];
 
       //when a rule does not match
-      if(!value.match(rule)) {
-        this.setState({ message: message, submitAttempts: this.state.submitAttempts + 1 });
+      if (!value.match(rule)) {
+        this.errorMessage(message);
         return false;
       }
     }
 
-    // return true;
+    return true;
   }
 
   handleSubmit(event) {
@@ -92,28 +92,33 @@ class Book extends React.Component {
     event.preventDefault();
 
     if(!this.validate()) {
-      return;
+      console.log('EJ VALIDERAD');
     }
 
-    let { author, title, published } = this.state;
+    let { id, author, title, published } = this.state;
 
     published += '-01-01'
 
     const book = {
+      id: id,
       author: author,
       title: title,
       published: published,
     }
+    if(book) {
+      console.log(book);
 
-    //submitting to url, to book  data
-    axios.post(process.env.REACT_APP_SERVER_URL, book)
-    .then(result => {
-      //flag to check if true in render function
-      this.setState({ created: true});
-    })
-    .catch(error=>{
-      console.log(error);
-    });
+    }else {
+      console.log('ingen book');
+    }
+
+    let updateFunc = axios.post;
+    let url = process.env.REACT_APP_SERVER_URL;
+
+    if(id) {
+        updateFunc = axios.put;
+        url += '/' + id;
+    }
   }
 
   //handles input controle
@@ -163,5 +168,6 @@ class Book extends React.Component {
     );
   }
 }
+
 
 export default withRouter(Book);

@@ -16,6 +16,7 @@ class BookLibrary extends React.Component {
       books: [],
     };
   }
+  
 
   componentDidMount() {
     axios(process.env.REACT_APP_SERVER_URL)
@@ -25,6 +26,11 @@ class BookLibrary extends React.Component {
 
   //RENDER FUNCTION DISPLAYS LIBRARY
   render() {
+    const reload = () => {
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 100);
+  };
     //varible containing the url we want to output
     let books = this.state.books.map((book) => {
 
@@ -37,8 +43,8 @@ class BookLibrary extends React.Component {
           <td>{book.author}</td>
           <td>{book.title}</td>
           <td>{date}</td>
-          <td><Link to={'/edit/' + book.id}><MdEdit /></Link></td>
-          <td className="delete"><AiFillDelete /></td>
+          <td><Link to={'/edit/' + book.id} onClick={() => reload()}><MdEdit /></Link></td>
+          <td className="delete" onClick={() => reload()}><AiFillDelete /></td>
         </tr>
       );
     });
