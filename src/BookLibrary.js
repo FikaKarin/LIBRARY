@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import {AiFillDelete} from 'react-icons/ai';
 import {MdEdit} from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import './BookLibrary.css';
 
 
@@ -36,7 +37,7 @@ class BookLibrary extends React.Component {
           <td>{book.author}</td>
           <td>{book.title}</td>
           <td>{date}</td>
-          <td><MdEdit /></td>
+          <td><Link to={'/edit/' + book.id}><MdEdit /></Link></td>
           <td className="delete"><AiFillDelete /></td>
         </tr>
       );

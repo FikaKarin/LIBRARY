@@ -49,10 +49,8 @@ router.delete('/:id', function(req, res) {
    });
 })
 
-
 //SAVE 1 BOOK FUNCTION
 router.post('/', function(req, res){
-  
   repository.save(req.body, (err, result)=> {
    if(err) {
       res.status(500).json({ 'error': err.toString() });
