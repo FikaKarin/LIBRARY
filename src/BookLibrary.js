@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
-import {AiFillDelete} from 'react-icons/ai';
-import {MdEdit} from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import Flashmessage from './FlashMessage'; 
 import './BookLibrary.css';
+import HomePage from "./HomePage";
 
 
 class BookLibrary extends React.Component {
@@ -14,55 +13,69 @@ class BookLibrary extends React.Component {
 
     this.state = {
       books: [],
+      loading: false,
+      error: false,
+      warningCount: 0,
     };
+
+    this.handleDelete = this.handleDelete.bind(this);
   }
   
 
   componentDidMount() {
+    this.refresh();
+}
+
+  refresh() {
+
+    this.setState({ error: false, loading: true});
+
     axios(process.env.REACT_APP_SERVER_URL)
-      .then((result) => this.setState({ books: result.data }))
-      .catch((error) => console.log(error));
+    .then(result => this.setState({ loading: false, books: result.data }))
+    .catch(error => {
+      this.setState({ error: true, loading: false });
+    });
+  }
+
+  //send delete req to server url with id target + error catch
+  handleDelete(id) {
+    
+    console.log('deleting test', id);
+
+    axios.delete(process.env.REACT_APP_SERVER_URL + '/' + id)
+    .then(result => {
+      this.refreah();
+    })
+    .catch(error => {
+      this.setState({
+        warningCount: this.state.warningCount + 1,
+        warning: 'Delete failed..',
+      })
+    })
   }
 
   //RENDER FUNCTION DISPLAYS LIBRARY
   render() {
-    const reload = () => {
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 100);
-  };
-    //varible containing the url we want to output
-    let books = this.state.books.map((book) => {
 
-      //variable to display published date with only 4 digits
-      let date = book.published.toString().substr(0,4)
+    let content = '';
 
-      //Values of object together with a delete and edit-button
-      return (
-        <tr key={book.id}>
-          <td>{book.author}</td>
-          <td>{book.title}</td>
-          <td>{date}</td>
-          <td><Link to={'/edit/' + book.id} onClick={() => reload()}><MdEdit /></Link></td>
-          <td className="delete" onClick={() => reload()}><AiFillDelete /></td>
-        </tr>
-      );
-    });
-    console.log("render", this.state.books);
-    return (
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Author</th>
-              <th>Title</th>
-              <th>Published</th>
-            </tr>
-          </thead>
-          <tbody>{books}</tbody>
-        </table>
-      </div>
-    );
+    if(this.state.loading) {
+        content = <div className="error">Loading...</div>
+    } 
+    else if(this.state.error) {
+        content = <div className="error">An error occured, please try again...</div>
+    } 
+    else {
+        content = 
+        (
+          <div className="book-library">
+            <Flashmessage key={this.state.warningCount} message={this.state.warning} duration="3000" />
+        <HomePage books={this.state.books} handleDelete={this.handleDelete} />
+        </div>
+        );
+    }
+
+    return content;
   }
 }
 

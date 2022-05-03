@@ -26,3 +26,9 @@ svg {
     color: rgb(203, 4, 4);
 
 }
+
+.error {
+    margin-top: 3em;
+    text-align: center;
+    font-size: 1.5em;
+}
