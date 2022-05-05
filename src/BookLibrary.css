@@ -1,9 +1,14 @@
 table {
     border-spacing: 3em 1em;
-    margin-top: 3em;
+    margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
 }
+
+td {
+    word-wrap: break-word;
+    max-width: 300px;
+    }
 
 th {
     text-align: left;
@@ -18,7 +23,7 @@ td:nth-child(2) {
     font-style: italic;
 }
 
-svg {
+.edit svg {
     color: rgba(0, 0, 0, 0.617);
 }
 
@@ -31,4 +36,12 @@ svg {
     margin-top: 3em;
     text-align: center;
     font-size: 1.5em;
+}
+
+.book-library .message {
+    font-weight: bold;
+    height: 2em;
+    color: red;
+    text-align: center;
+    margin-top: 1em;
 }

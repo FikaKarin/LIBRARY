@@ -27,7 +27,6 @@ class BookRepository {
 
     delete(id, callback) {
         this.pool.query('delete from books where id = ?', id, callback);
-
     }
 }
 

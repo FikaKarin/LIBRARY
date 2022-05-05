@@ -35,7 +35,7 @@ class Book extends React.Component {
             author: '',
             title: '',
             published: '',
-            submitAttempts: 0,
+            warningCount: 0,
         }
         //binds the book objekt to the handlechange funktion
         this.handleChange = this.handleChange.bind(this);
@@ -59,12 +59,12 @@ class Book extends React.Component {
                 });
             })
             .catch(error => {
-                console.log(error);
+                this.warning("Unable to load book");
             });
     }
 
-    errorMessage(message) {
-        this.setState({ message: message, submitAttempts: this.state.submitAttempts + 1 });
+    warning(message) {
+        this.setState({ message: message, warningCount: this.state.warningCount + 1 });
     }
 
     //function that uses error messages from validation object if input fields in Create is not entered correct
@@ -75,7 +75,7 @@ class Book extends React.Component {
             const value = this.state[field];
 
             if (!value.match(rule)) {
-                this.errorMessage(message);
+                this.warning(message);
                 return false;
             }
         }
@@ -116,7 +116,7 @@ class Book extends React.Component {
                 this.setState({ created: true });
             })
             .catch(error => {
-                this.errorMessage(error.toString());
+                this.warning("Unable to save book");
             });
 
     }
@@ -156,7 +156,7 @@ class Book extends React.Component {
                     <label htmlFor="published">Published:</label>
                     <input value={this.state.published} onChange={this.handleChange} type="text" name="published" id="published" />
                     <input type="submit" value="Save" onClick={() => reload()} />
-                    <FlashMessage key={this.state.submitAttempts} message={this.state.message} duration='3000' />
+                    <FlashMessage key={this.state.warningCount} message={this.state.message} duration='3000' />
                 </form>
 
 

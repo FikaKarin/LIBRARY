@@ -17,27 +17,13 @@ app.set('view engine', 'pug');
 
 app.use(cors());
 
-app.use(function(req, res, next){
-  setTimeout(next, 1000);
-});
-
-app.use(function(req, res, next){
-  if (req.method === 'DELETE') {
-    res.sendStatus(500);
-  }
-    next();
-});
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/books', booksRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,9 +32,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
- 
   res.status(err.status || 500).json({ 'error': err.toString() });
-
 });
 
 module.exports = app;

@@ -1,21 +1,19 @@
 import React from "react";
 import axios from "axios";
-import Flashmessage from './FlashMessage'; 
 import './BookLibrary.css';
 import HomePage from "./HomePage";
-
+import Flashmessage from './FlashMessage'; 
 
 class BookLibrary extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log("book library");
-
     this.state = {
       books: [],
       loading: false,
       error: false,
-      warningCount: 0,
+      warning: '',
+      warningCount: 0
     };
 
     this.handleDelete = this.handleDelete.bind(this);
@@ -39,19 +37,18 @@ class BookLibrary extends React.Component {
 
   //send delete req to server url with id target + error catch
   handleDelete(id) {
-    
     console.log('deleting test', id);
 
     axios.delete(process.env.REACT_APP_SERVER_URL + '/' + id)
-    .then(result => {
-      this.refreah();
-    })
-    .catch(error => {
-      this.setState({
-        warningCount: this.state.warningCount + 1,
-        warning: 'Delete failed..',
+      .then(result => {
+        this.refresh();
       })
-    })
+      .catch(error => {
+        this.setState({
+          warningCount: this.state.warningCount + 1,
+          warning: 'Delete failed..',
+        })
+      })
   }
 
   //RENDER FUNCTION DISPLAYS LIBRARY
@@ -70,8 +67,8 @@ class BookLibrary extends React.Component {
         (
           <div className="book-library">
             <Flashmessage key={this.state.warningCount} message={this.state.warning} duration="3000" />
-        <HomePage books={this.state.books} handleDelete={this.handleDelete} />
-        </div>
+            <HomePage books={this.state.books} handleDelete={this.handleDelete} />
+          </div>
         );
     }
 
