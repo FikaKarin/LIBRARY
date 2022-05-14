@@ -23,6 +23,18 @@ label {
     justify-self: end;
 }
 
+h5 {
+    font-weight:400;
+    font-size: 1em;
+    margin-top: 35px;
+    margin-bottom: 0.5px;
+
+}
+
+#comment {
+    height: 200px;
+}
+
 .message {
     grid-column: 2/3;
     color: red;

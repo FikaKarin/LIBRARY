@@ -19,13 +19,17 @@ function HomePage(props) {
         //Values of object together with a delete and edit-button
         //+ reload()
         return (
+          
           <tr key={book.id}>
             <td>{book.author}</td>
             <td>{book.title}</td>
             <td>{date}</td>
             <td className="edit"><Link to={'/edit/' + book.id} onClick={() => reload()}><MdEdit /></Link></td>
             <td className="delete"><Link onClick={() => { if(window.confirm('Are you sure you want to delete this book?') ) {props.handleDelete(book.id)} }} to='/' ><AiFillDelete /></Link></td>
+            <td>{book.the_comment}</td>   
+            {/* <script>console.log("{book.the_comment}")</script> */}
           </tr>
+        
         );
       });
       console.log("render", props.books);

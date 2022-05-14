@@ -23,11 +23,13 @@ router.get('/:id', function (req, res) {
 
 //UPDATE FUNCTION
 router.put('/:id', function (req, res) {
+  
   repository.update(req.params.id, req.body, (err, result) => {
     if(err) {
        res.status(500).json({ 'error': err.toString() });
      } 
      else {
+
        res.sendStatus(200);
      } 
    });

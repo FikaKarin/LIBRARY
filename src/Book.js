@@ -22,6 +22,10 @@ class Book extends React.Component {
         published: {
             rule: /^\d{4}$/,
             message: 'Published date must be a 4-digit year'
+        },
+        the_comment: {
+            rule: /^\S.{0,250}\S$/,
+            message: 'Comment field must have 2-250 characters'
         }
     }
 
@@ -35,6 +39,7 @@ class Book extends React.Component {
             author: '',
             title: '',
             published: '',
+            the_comment: '',
             warningCount: 0,
         }
         //binds the book objekt to the handlechange funktion
@@ -50,12 +55,13 @@ class Book extends React.Component {
 
         axios.get(process.env.REACT_APP_SERVER_URL + '/' + this.state.id)
             .then(result => {
-                let { author, title, published}  = result.data[0];
+                let { author, title, published, the_comment}  = result.data[0];
 
                 this.setState({
                     author: author,
                     title: title,
-                    published: published.substr(0, 4)
+                    published: published.substr(0, 4),
+                    the_comment: the_comment
                 });
             })
             .catch(error => {
@@ -92,7 +98,7 @@ class Book extends React.Component {
             return;
         }
 
-        let { id, author, title, published } = this.state;
+        let { id, author, title, published, the_comment } = this.state;
 
         published += '-01-01';
 
@@ -101,6 +107,7 @@ class Book extends React.Component {
             author: author,
             title: title,
             published: published,
+            the_comment: the_comment
         }
 
         let updateFunc = axios.post;
@@ -110,6 +117,8 @@ class Book extends React.Component {
             updateFunc = axios.put;
             url += '/' + id;
         }
+
+        console.log(book)
 
         updateFunc(url, book)
             .then(result => {
@@ -125,7 +134,7 @@ class Book extends React.Component {
         //controles 
         const name = event.target.name;
         const value = event.target.value;
-
+        
         this.setState({
             [name]: value
         });
@@ -155,6 +164,10 @@ class Book extends React.Component {
                     <input value={this.state.title} onChange={this.handleChange} type="text" name="title" id="title" />
                     <label htmlFor="published">Published:</label>
                     <input value={this.state.published} onChange={this.handleChange} type="text" name="published" id="published" />
+                    <label htmlFor="comment"></label>
+                    <h5>Comment from previous reader:</h5>
+                    <h3></h3>
+                    <textarea value={this.state.the_comment} onChange={this.handleChange} type="text" name="the_comment" id="comment" />
                     <input type="submit" value="Save" onClick={() => reload()} />
                     <FlashMessage key={this.state.warningCount} message={this.state.message} duration='3000' />
                 </form>
@@ -162,6 +175,8 @@ class Book extends React.Component {
 
             </div>
         );
+        
+        // <input type="submit" value="Save" onClick={() => reload()} />
     }
 }
 

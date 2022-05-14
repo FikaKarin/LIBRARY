@@ -1,5 +1,5 @@
 .header {
-    background-color: rgb(0, 102, 255);
+    background-color: rgba(10, 97, 10, 0.824);
     height: 4em;
     line-height: 4.5em;
     display: grid;
@@ -20,7 +20,7 @@
 .header>ul>li>a {
     font-family: sans-serif;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
@@ -34,8 +34,7 @@
 
 .header-left {
     justify-self: start;
-    font-size: 0.4rem;
-
+    font-size: 0.6rem;
 }
 
 .header-right{
@@ -44,7 +43,7 @@
 
 } 
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
     .header-left {
         font-size: 0.3rem;
     

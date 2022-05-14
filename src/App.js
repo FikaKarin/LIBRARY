@@ -4,6 +4,7 @@ import Book from './Book';
 import Header from './Header';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import HomePage from './HomePage';
 
 function App() {
 
@@ -12,7 +13,6 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-
         <Switch>
           <Route exact path="/">
             <BookLibrary />
