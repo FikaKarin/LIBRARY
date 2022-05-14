@@ -1,5 +1,5 @@
 .header {
-    background-color: rgba(10, 97, 10, 0.824);
+    background-color: #006d77;
     height: 4em;
     line-height: 4.5em;
     display: grid;
@@ -19,13 +19,13 @@
 
 .header>ul>li>a {
     font-family: sans-serif;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
+    font-weight: 200;
+    color: #ffffff;
     text-decoration: none;
 }
 
 .header>ul>li>a:hover {
-    color: white;
+    color: #fcbf49;
 }
 
 .header>ul>li.logo {

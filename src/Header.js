@@ -22,12 +22,12 @@ function Header() {
       <ul className="header-right">
         <li>
           <Link to="/create" onClick={() => reload()}>
-            Create
+            Add
           </Link>
         </li>
         <li>
           <Link to="/" onClick={() => reload()}>
-            View
+            View all
           </Link>
         </li>
       </ul>
