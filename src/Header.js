@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import logo from './images/Logo.PNG'
 
 function Header() {
   const reload = () => {
@@ -14,7 +15,7 @@ function Header() {
       <ul className="header-left">
         <li className="logo">
           <Link to="/" onClick={() => reload()}>
-            THE NEIGHBORHOOD LIBRARY
+          <img src={logo} alt="logo" />
           </Link>
         </li>
       </ul>
@@ -26,7 +27,7 @@ function Header() {
           </Link>
         </li>
         <li>
-          <Link to="/" onClick={() => reload()}>
+          <Link to="/view" onClick={() => reload()}>
             View all
           </Link>
         </li>

@@ -166,12 +166,11 @@ class Book extends React.Component {
                     <input value={this.state.published} onChange={this.handleChange} type="text" name="published" id="published" />
                     <label htmlFor="comment"></label>
                     <h5>Comment from previous reader:</h5>
-                    <h3></h3>
+                    <h3> </h3>
                     <textarea value={this.state.the_comment} onChange={this.handleChange} type="text" name="the_comment" id="comment" />
                     <input type="submit" value="Save" onClick={() => reload()} />
                     <FlashMessage key={this.state.warningCount} message={this.state.message} duration='3000' />
                 </form>
-
 
             </div>
         );

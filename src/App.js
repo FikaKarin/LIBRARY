@@ -4,6 +4,7 @@ import Book from './Book';
 import Header from './Header';
 import './App.css';
 import Welcome from './Welcome';
+import Search from './SearchFunktion.js'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
@@ -24,6 +25,10 @@ function App() {
           </Route>
           <Route path="/edit/:id">
             <Book />
+          </Route>
+          <Route path="/view">
+            <Search />
+            <BookLibrary />
           </Route>
         </Switch>
       </div>

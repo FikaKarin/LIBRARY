@@ -65,9 +65,11 @@ class BookLibrary extends React.Component {
     else {
         content = 
         (
+          <div className="book-library-container">
           <div className="book-library">
             <Flashmessage key={this.state.warningCount} message={this.state.warning} duration="3000" />
             <HomePage books={this.state.books} handleDelete={this.handleDelete} />
+          </div>
           </div>
         );
     }

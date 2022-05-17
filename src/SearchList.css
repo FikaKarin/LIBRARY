@@ -1,0 +1,20 @@
+ul {
+    list-style:none;
+}
+
+#searchedBook  {
+    text-decoration: none;
+    background-color: #006d7721;
+    padding: 13px;
+    max-width: 350px;
+}
+
+.searchList {
+    float:right;
+    margin-right: 7em;
+    text-decoration: none;
+}
+
+.id {
+    font-weight: 600;
+}

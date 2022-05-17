@@ -1,0 +1,24 @@
+#welcome {
+    margin-top: 8rem;
+    margin: auto;
+    width: 60%;
+    padding: 40px;
+    max-width: 60%;
+    color: #006d77
+}
+
+#subTitleWelcome {
+    font-weight: 100;
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+
+}
+
+#welcomeBorder {
+ border-bottom: 1px solid black;
+ margin-bottom: 5rem;
+}
+
+#pleaseDelete {
+    color: red;
+}
