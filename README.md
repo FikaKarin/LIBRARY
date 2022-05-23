@@ -1,7 +1,11 @@
 School project for JAVASCRIPT 3
 
-React with NodeJS server and Express framework.
+The Hood Book Library
+By the subway you can get or leave book for the next person, for free! With this app you simly add a book to the list, or delete a book if you grab one with you home.
+Quick, simple and easy design that let's you search for a book before heading down to the shelf itself.
 
+
+React with NodeJS server and Express framework.
 
 Full CRUD <br>
 Responsive design<br>
