@@ -3,9 +3,9 @@ School project for JAVASCRIPT 3
 React with NodeJS server and Express framework.
 
 
-Full CRUD
-Responsive design
-Simplicity and accessability
+Full CRUD <br>
+Responsive design<br>
+Simplicity and accessability<br>
 JSdoc for commentary
 
 
