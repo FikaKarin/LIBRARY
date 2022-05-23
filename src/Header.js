@@ -3,6 +3,11 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from './images/Logo.PNG'
 
+/**
+ * Header function
+ * using reload function to handle rendering problems 
+ * @returns links to <Homepage>, <Add> and <View all> in Header with onClick() and reload()
+ */
 function Header() {
   const reload = () => {
       setTimeout(() => {

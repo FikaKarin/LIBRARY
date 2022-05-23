@@ -4,6 +4,11 @@ import './BookLibrary.css';
 import HomePage from "./HomePage";
 import Flashmessage from './FlashMessage'; 
 
+/**
+ * Class for Booklibrary 
+ * contaning book array
+ * handleing delete request, error, fails, warnings
+ */
 class BookLibrary extends React.Component {
   constructor(props) {
     super(props);
@@ -19,11 +24,11 @@ class BookLibrary extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
   
-
+  //Called immediately after a component is mounted. Setting state here will trigger re-rendering.
   componentDidMount() {
     this.refresh();
 }
-
+  //refresh function page with result
   refresh() {
 
     this.setState({ error: false, loading: true});
@@ -67,7 +72,7 @@ class BookLibrary extends React.Component {
         (
           <div className="book-library-container">
           <div className="book-library">
-            <Flashmessage key={this.state.warningCount} message={this.state.warning} duration="3000" />
+            <Flashmessage key={this.state.warningCount} message={this.state.warning} duration="4000" />
             <HomePage books={this.state.books} handleDelete={this.handleDelete} />
           </div>
           </div>

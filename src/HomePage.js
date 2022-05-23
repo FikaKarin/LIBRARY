@@ -4,19 +4,32 @@ import { MdEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./BookLibrary.css";
 
+
+/**
+ * HomePage function mapping out all books from database
+ * using reload() to handle rendering problems
+ * @returns All available books including properties
+ */
 function HomePage(props) {
   const reload = () => {
     setTimeout(() => {
       window.location.reload(false);
-    }, 2200);
+    }, 3200);
   };
+
+
+  /**
+   * book variable containing:
+   * table row elements with book id, author, title, date, foreignkey-> comment
+   * delete function/button
+   * edit function/button 
+   * confirmation window at delete
+   */
   //varible containing the url we want to output
   let books = props.books.map((book) => {
     //variable to display published date with only 4 digits
     let date = book.published.toString().substr(0, 4);
 
-    //Values of object together with a delete and edit-button
-    //+ reload()
     return (
       <tr key={book.id}>
         <td>{book.id}</td>

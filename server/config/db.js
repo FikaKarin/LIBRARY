@@ -1,3 +1,6 @@
+/**
+ * JS object for connection information
+ */
 const db = {
     'user': 'books',
     'password': 'hello',

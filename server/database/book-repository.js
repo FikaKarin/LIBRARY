@@ -1,5 +1,9 @@
-const { toHaveDisplayValue } = require("@testing-library/jest-dom/dist/matchers");
-
+/**
+ * Class containing all CRUD API:s
+ * save(), saving new book values, <title>, <author>, <published> together with foreign key <comment> values
+ * pool() containing configuration to mySQL database
+ * @constructor connectionPool
+ */
 class BookRepository {
     constructor(connectionPool) {
         this.connectionPool = connectionPool;

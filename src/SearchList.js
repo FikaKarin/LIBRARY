@@ -1,7 +1,11 @@
 import './BookLibrary.css';
 import './SearchList.css';
 
-
+/**
+ * Searchlist function mapping through database
+ * @param {string} 
+ * @returns books.id, books.author and books.title
+ */
 export default function SearchList({books}) {
     return (
         <div><br />

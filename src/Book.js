@@ -4,10 +4,16 @@ import axios from 'axios';
 import { Redirect, withRouter } from 'react-router-dom';
 import FlashMessage from './FlashMessage';
 
+/**
+ * Class for entering new book into database. 
+ * validation for input values:
+ * author -checks that field starts and end with a non-space characters, have to have between 2-48 characters
+ * title - checks that field starts and end with a non-space characters, have to have between 2-70 characters
+ * published - checks that field it 4 digits
+ * the_comment - checks that field has 2-250 characters
+ */
 class Book extends React.Component {
-    //author -checks that field starts and end with a non-space characters, have to have between 2-48 characters
-    //title - checks that field starts and end with a non-space characters, have to have between 2-70 characters
-    //published - checks that field it 4 digits
+    
     validation = {
         author: {
             rule: /^\S.{0,48}\S$/,
@@ -53,6 +59,9 @@ class Book extends React.Component {
             return;
         }
 
+        //get request to server url together with homepage and state id
+        //then put new input into next index in database
+        //catching errors with warning <string>
         axios.get(process.env.REACT_APP_SERVER_URL + '/' + this.state.id)
             .then(result => {
                 let { author, title, published, the_comment}  = result.data[0];
@@ -68,7 +77,8 @@ class Book extends React.Component {
                 this.warning("Unable to load book");
             });
     }
-
+    
+    //warning function with set parameter of string value in message when unable to load new book
     warning(message) {
         this.setState({ message: message, warningCount: this.state.warningCount + 1 });
     }
@@ -120,6 +130,8 @@ class Book extends React.Component {
 
         console.log(book)
 
+        //function for updating values of book
+        //catching errors with warning <string>
         updateFunc(url, book)
             .then(result => {
                 this.setState({ created: true });
@@ -140,21 +152,25 @@ class Book extends React.Component {
         });
     }
 
+    /**
+     * Render function with reload() after 2.8 sec
+     * Gets text out of the controle
+     * Value will be the corresponfding property
+     * key makes flashmessage re-rendered every time validationmessage changes
+     * @returns Form for saving a new book with input fields for author, title, published, comment, save-button
+     */
     render() {
         const reload = () => {
             setTimeout(() => {
               window.location.reload(false);
-            }, 1200);
+            }, 2800);
         };
 
-        //if the state is created --> redirect to homepage
+        //if new book is created is created --> redirect to homepage
         if (this.state.created) {
             return <Redirect to='/' />;
         }
-        //Form for saving a new book
-        //Gets text out of the controle
-        //Value will be the corresponfding property
-        //key makes flashmessage re-rendered every time validationmessage changes
+       
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -174,8 +190,6 @@ class Book extends React.Component {
 
             </div>
         );
-        
-        // <input type="submit" value="Save" onClick={() => reload()} />
     }
 }
 
