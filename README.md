@@ -1,3 +1,15 @@
+School project for JAVASCRIPT 3
+
+React with NodeJS server and Express framework.
+
+
+Full CRUD
+Responsive design
+Simplicity and accessability
+JSdoc for commentary
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
