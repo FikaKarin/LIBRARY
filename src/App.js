@@ -36,10 +36,8 @@ function App() {
             <Book />
           </Route>
           <Route path="/view">
-           
             <BookLibrary />
             <Search />
-        
           </Route>
         </Switch>
       </div>
