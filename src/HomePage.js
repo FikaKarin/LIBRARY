@@ -4,7 +4,6 @@ import { MdEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./BookLibrary.css";
 
-
 /**
  * HomePage function mapping out all books from database
  * using reload() to handle rendering problems

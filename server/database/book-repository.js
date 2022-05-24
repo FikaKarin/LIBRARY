@@ -2,7 +2,7 @@
  * Class containing all CRUD API:s
  * save(), saving new book values, <title>, <author>, <published> together with foreign key <comment> values
  * pool() containing configuration to mySQL database
- * @constructor connectionPool
+ * @constructor connectionPool, to be set as value of pool function
  */
 class BookRepository {
     constructor(connectionPool) {

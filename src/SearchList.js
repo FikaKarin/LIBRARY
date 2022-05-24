@@ -8,8 +8,9 @@ import './SearchList.css';
  */
 export default function SearchList({books}) {
     return (
-        <div><br />
-            <div>Based on your search, these books are available: </div>
+        <div className="searchbar-container">
+        <div className='searchList-container '><br />
+            <div className='text-test'>Based on your search, these books are available: </div>
             <ul>
                 {books.map(books => (
                     <li key = {books.id} id='searchedBook'>
@@ -19,6 +20,7 @@ export default function SearchList({books}) {
                     </li>
                 ))}
             </ul>
+        </div>
         </div>
     )
 }

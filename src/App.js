@@ -36,12 +36,13 @@ function App() {
             <Book />
           </Route>
           <Route path="/view">
-            <Search />
             <BookLibrary />
+            <Search />
           </Route>
         </Switch>
       </div>
     </Router>
+    
   );
 }
 

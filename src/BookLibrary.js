@@ -8,9 +8,12 @@ import Flashmessage from './FlashMessage';
  * Class for Booklibrary 
  * contaning book array
  * handleing delete request, error, fails, warnings
+ * @constructor  the parent class, which is in the case is React.Component, is called and  constructor is called with super() function and props as argument
+ * @returns content variable
  */
 class BookLibrary extends React.Component {
   constructor(props) {
+    //transfer the value of prop to the super() function from the constructor():
     super(props);
 
     this.state = {
