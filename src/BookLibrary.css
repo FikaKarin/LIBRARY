@@ -4,11 +4,11 @@ table {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    margin-bottom: 5em;
 }
 
 .bookLibraryBox {
     background-color: #fefae0b1;
-    /* float:left; */
 }
 
 .book-library-container {
@@ -25,9 +25,10 @@ table {
     font-size: 1.7rem;
     color: #006d77;
     padding-left: 1rem;
-    padding-top: 2em;
     max-width: 70%;
     margin-left: 1%;
+    padding-top: 1em;
+    
 }
 
 h1 {
@@ -51,11 +52,13 @@ th {
     text-align: left;
     padding-bottom: 0.8em;
     font-size: 1.3rem;
+    padding: 0.8em;
 }
 td {
     word-wrap: break-word;
     max-width: 300px;
     padding-bottom: 1.5em;
+    padding: 1em;
     }
 
 td:nth-child(1) {
