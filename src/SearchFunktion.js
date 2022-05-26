@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'; 
 import List from './SearchList';
 
+/**
+ * Function for filtering through all titles in booklist. 
+ * @returns Search field. By input: filtered book titles appear that matches input in search field
+ */
 export default function Search() {
     const [books, setBooks] = useState([])
     const [search, setSearch] = useState('')
@@ -17,10 +21,10 @@ export default function Search() {
             })
     }, [])
 
-    const filteredBooks = search.length === 0 ? books : books.filter(books => books.title.toLowerCase().includes(search.toLowerCase()))
-
-    // const filteredAuthor = search.length === 0 ? books : books.filter(books => books.author.toLowerCase().includes(search.toLowerCase()))
-
+        /**
+         *Filters through book titles in database 
+         */
+        const filteredBooks = search.length === 0 ? books : books.filter(books => books.title.toLowerCase().includes(search.toLowerCase()))
 
     return (
         <div className='searchList'>
@@ -31,7 +35,6 @@ export default function Search() {
                 value ={search}
                 onChange = {(e) => setSearch(e.target.value)}
                 />
-            {/* Books array passed down to List */}
             <List books = {filteredBooks} />
         </div>
     )

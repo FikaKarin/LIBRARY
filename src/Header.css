@@ -43,7 +43,7 @@
 .header-left {
     justify-self: start;
     font-size: 0.6rem;
-    z-index: 100;
+    padding: 30px;
 }
 
 .header-right{

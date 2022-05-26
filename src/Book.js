@@ -6,14 +6,18 @@ import FlashMessage from "./FlashMessage";
 
 /**
  * Class for entering new book into database.
- * validation for input values:
- * author -checks that field starts and end with a non-space characters, have to have between 2-48 characters
- * title - checks that field starts and end with a non-space characters, have to have between 2-70 characters
- * published - checks that field it 4 digits
- * the_comment - checks that field has 2-250 characters
- * @constructor props
+ * @property {string} author field must have 2-50 characters
+ * @property {string} title field must have 2-70 characters
+ * @property {number} published date must be a 4-digit year
+ * @property {string} the_comment foreign key value, comment on book from user
+ * @constructor
+ * @returns form input fields
  */
 class Book extends React.Component {
+  /**
+   * Validation object for input values
+   * @type {validation}
+   */
   validation = {
     author: {
       rule: /^\S.{0,48}\S$/,
@@ -29,17 +33,23 @@ class Book extends React.Component {
       rule: /^\d{4}$/,
       message: "Published date must be a 4-digit year",
     },
+
     the_comment: {
       rule: /^\S.{0,250}\S$/,
       message: "Comment field must have 2-250 characters",
     },
   };
 
-  //takes properties/attributes that can be passed in when we use Book component
+  /**
+   * takes properties/attributes that can be passed in when we use Book component
+   * @param {*} props
+   */
   constructor(props) {
     super(props);
 
-    //assigns to the state
+    /**
+     * assigns value to state
+     */
     this.state = {
       id: props.match.params.id,
       author: "",
@@ -48,20 +58,26 @@ class Book extends React.Component {
       the_comment: "",
       warningCount: 0,
     };
-    //binds the book objekt to the handlechange funktion
+
+    /**
+     * Binds the book objekt to the handlechange function
+     */
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //function that checks that the input has been recieved from input
+  /**
+   * Function that checks that the input has been recieved from input
+   * @axios
+   * @then
+   * @catch
+   * @return if object does not have id
+   */
   componentDidMount() {
     if (!this.state.id) {
       return;
     }
 
-    //get request to server url together with homepage and state id
-    //then put new input into next index in database
-    //catching errors with warning <string>
     axios
       .get(process.env.REACT_APP_SERVER_URL + "/" + this.state.id)
       .then((result) => {
@@ -79,7 +95,10 @@ class Book extends React.Component {
       });
   }
 
-  //warning function with set parameter of string value in message when unable to load new book
+  /**
+   * Warning function with set parameter of string value in message when unable to load new book
+   * @param {string} message
+   */
   warning(message) {
     this.setState({
       message: message,
@@ -87,13 +106,19 @@ class Book extends React.Component {
     });
   }
 
-  //function that uses error messages from validation object if input fields in Create is not entered correct
+  /**
+   * Function that uses error messages from validation object if input fields in <Create> is not entered correct
+   * @returns true or false
+   */
   validate() {
     for (let field in this.validation) {
       const rule = this.validation[field].rule;
       const message = this.validation[field].message;
       const value = this.state[field];
 
+      /**
+       * If vlaue does not match rule of validation, show warning message
+       */
       if (!value.match(rule)) {
         this.warning(message);
         return false;
@@ -103,9 +128,13 @@ class Book extends React.Component {
     return true;
   }
 
-  //function for submit-button that handles changes if fields is validated
+  /**
+   * Function for submit-button that handles changes if fields is validated, or not
+   * Stops the form from submitting/parameters will not appear in url. Output will appear in state.
+   * @param {*} event
+   * @returns
+   */
   handleSubmit(event) {
-    //stops the form from submitting/parameters will not appear in url. Output will appear in state.
     event.preventDefault();
 
     if (!this.validate()) {
@@ -134,8 +163,10 @@ class Book extends React.Component {
 
     console.log(book);
 
-    //function for updating values of book
-    //catching errors with warning <string>
+    /**
+     * Function for updating values of book
+     * Catching errors with warning <string>
+     */
     updateFunc(url, book)
       .then((result) => {
         this.setState({ created: true });
@@ -144,9 +175,13 @@ class Book extends React.Component {
         this.warning("Unable to save book");
       });
   }
-  //handles input controle
+  
+  /**
+   * handles input controle for name and value
+   * @param {*} event name, value
+   */
   handleChange(event) {
-    //controles
+
     const name = event.target.name;
     const value = event.target.value;
 
@@ -159,7 +194,8 @@ class Book extends React.Component {
    * Render function with reload() after 2.8 sec
    * Gets text out of the controle
    * Value will be the corresponfding property
-   * key makes flashmessage re-rendered every time validationmessage changes
+   * Key makes flashmessage re-rendered every time validationmessage changes
+   * When new book is created, redirect to homepage
    * @returns Form for saving a new book with input fields for author, title, published, comment, save-button
    */
   render() {
@@ -169,7 +205,7 @@ class Book extends React.Component {
       }, 2800);
     };
 
-    //if new book is created is created --> redirect to homepage
+ 
     if (this.state.created) {
       return <Redirect to="/" />;
     }

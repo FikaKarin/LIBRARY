@@ -1,6 +1,5 @@
 table {
-  /*   border-spacing: 3em 1em; */
-    margin-top: 1em;
+    margin-top: 2em;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -9,6 +8,7 @@ table {
 
 .bookLibraryBox {
     background-color: #fefae0b1;
+    margin-top: 2em;
 }
 
 .book-library-container {

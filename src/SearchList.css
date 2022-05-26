@@ -1,20 +1,25 @@
 ul {
     list-style:none;
+    padding-left: 0.1rem;
 }
 
 #searchedBook  {
     text-decoration: none;
     background-color: #006d7721;
-    padding: 13px;
-    max-width: 350px;
+    padding: 25px;
+    width: 330px;
 }
 
 .searchList {
-
     text-decoration: none;
     flex-direction: column;
-    align-items: center;
     display: inline-flex;
+    margin-left: 0.4rem;
+}
+
+.searchList h3 {
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 .id {
@@ -25,9 +30,16 @@ ul {
 .searchList-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-bottom: 5rem;
 
 }
 .searchbar-container {
     display: flex;
+}
+
+@media  (max-width: 1356px) {
+    .searchList {
+        margin-left: 6rem;
+        margin-right: 10rem;
+    }
 }
