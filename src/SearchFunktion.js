@@ -3,8 +3,8 @@ import axios from 'axios';
 import List from './SearchList';
 
 /**
- * Function for filtering through all titles in booklist. 
- * @returns Search field. By input: filtered book titles appear that matches input in search field
+ * Function for filtering through all titles and authors in booklist. 
+ * @returns Search field. By input: filtered book titles and/or authors appears that matches input in search field
  */
 export default function Search() {
     const [books, setBooks] = useState([])
@@ -22,16 +22,16 @@ export default function Search() {
     }, [])
 
         /**
-         *Filters through book titles in database 
+         *Filters through book titles and authors in database 
          */
-        const filteredBooks = search.length === 0 ? books : books.filter(books => books.title.toLowerCase().includes(search.toLowerCase()))
+        const filteredBooks = search.length === 0 ? books : books.filter(books => books.title.toLowerCase() && books.author.toLowerCase().includes(search.toLowerCase()))
 
     return (
         <div className='searchList'>
-            <h3>Search for books: </h3>
+            <h3>Search for books or athors: </h3>
                 <input 
                 type="text"
-                placeholder = "Search name"
+                placeholder = "Search title or author"
                 value ={search}
                 onChange = {(e) => setSearch(e.target.value)}
                 />

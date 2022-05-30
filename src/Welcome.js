@@ -20,8 +20,8 @@ function Welcome() {
         </div>
         <div>
         <h2>- Leave a book (in the bookshelf by the subway station)</h2>
-        <h2>- You can search for a specific title in <a href="./view">View all</a></h2>
-        <h2>- <a href="./create">Add</a> a book </h2>
+        <h2>- You can search for a specific title in <a href="./view">View all</a> before heading to the shelf</h2>
+        <h2>- <a href="./create">Add</a> a book and leave a helpful comment to the next reader </h2>
         <h2 id='pleaseDelete'>- Please DELETE the book from this list when you pick it out of the shelf</h2>
         </div>
     </div>

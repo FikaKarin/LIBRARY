@@ -18,7 +18,6 @@
     margin: 0;
     list-style-type: none;
     margin-right: 4em;
-
 }
 
 .header>ul>li {
@@ -43,7 +42,11 @@
 .header-left {
     justify-self: start;
     font-size: 0.6rem;
-    padding: 30px;
+}
+
+.header-left img {
+    margin: 30px;
+
 }
 
 .header-right{
@@ -55,5 +58,8 @@
     .header-left {
         font-size: 0.3rem;
 
+    }
+    .header {
+        width: 100%;
     }
   }

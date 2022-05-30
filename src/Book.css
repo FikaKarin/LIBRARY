@@ -10,6 +10,8 @@ form {
     box-shadow: 3px 3px 19px rgb(33, 108, 101);
     padding: 2em;
     border-radius: 0.2em;
+    z-index: -1;
+    position: absolute;
 }
 
 input[type="submit"] {
@@ -28,6 +30,11 @@ label {
 
 h1 {
     text-align: center;
+}
+
+.logo a {
+    z-index: 1;
+    position:relative;
 }
 
 h5 {

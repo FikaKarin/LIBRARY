@@ -59,7 +59,6 @@ class BookLibrary extends React.Component {
    * @param {string} id Book primary key id
    */
   handleDelete(id) {
-    console.log("deleting test", id);
 
     axios
       .delete(process.env.REACT_APP_SERVER_URL + "/" + id)

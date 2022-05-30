@@ -207,7 +207,7 @@ class Book extends React.Component {
 
  
     if (this.state.created) {
-      return <Redirect to="/" />;
+      return <Redirect to="/view" />;
     }
 
     return (
@@ -249,7 +249,7 @@ class Book extends React.Component {
             id="comment"
           />
           <input
-            class="button-52"
+            className="button-52"
             type="submit"
             value="Save"
             onClick={() => reload()}
