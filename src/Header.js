@@ -36,6 +36,11 @@ function Header() {
             View all
           </Link>
         </li>
+        <li>
+          <Link to="/about" onClick={() => reload()}>
+            About
+          </Link>
+        </li>
       </ul>
     </div>
     

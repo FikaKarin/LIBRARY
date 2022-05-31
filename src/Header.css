@@ -32,7 +32,7 @@
 }
 
 .header>ul>li>a:hover {
-    color: #e29578;
+    color: #b0d59b;
 }
 
 .header>ul>li.logo {
@@ -62,4 +62,20 @@
     .header {
         width: 100%;
     }
+    .header-right {
+        font-size: 1rem;
+    }
+  }
+
+  .about {
+      margin-left: 25vw;
+      margin-right: 25vw;
+      margin-top: 5vw;
+      color: #006d77;
+      border: 1px solid #024d54;
+      padding: 2em;
+      border-bottom-left-radius: 55px;
+      border-top-right-radius: 55px;
+      border-bottom-right-radius: 55px;
+      box-shadow: 3px 0px 3px #024d54;
   }

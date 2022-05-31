@@ -239,7 +239,7 @@ class Book extends React.Component {
             id="published"
           />
           <label htmlFor="comment"></label>
-          <h5>Comment from previous reader: <span>(cannot be edited!)</span></h5>
+          <h5>Comment from previous reader: <span>(to make sure the comments always comes from the same person who enters the book in the library list, edits on this field is not allowed!)</span></h5>
           <h3> </h3>
           <textarea
             value={this.state.the_comment}

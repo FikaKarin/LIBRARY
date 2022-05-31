@@ -13,7 +13,7 @@ function HomePage(props) {
   const reload = () => {
     setTimeout(() => {
       window.location.reload(false);
-    }, 3200);
+    }, 2200);
   };
 
 
@@ -45,15 +45,14 @@ function HomePage(props) {
           </Link>
         </td>
         <td className="delete">
-          <Link
-            onClick={() => {
+          <Link to={"/view"} onClick={() => {
               if (
                 window.confirm("Are you sure you want to delete this book?")
               ) {
-                props.handleDelete(book.id);
+                props.handleDelete(book.id)
+                reload();
               }
             }}
-            to="/"
           >
             <AiFillDelete />
           </Link>

@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import './App.css';
 import Welcome from './Welcome';
+import About from './About';
 import Search from './SearchFunktion.js'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
  * Header (navbar)
  * BookLibrary (all books)
  * Book (adding book)
- * Book (edits by id)
+ * Book (/edits by id)
  * @returns paths to components as pages
  */
 function App() {
@@ -38,6 +39,9 @@ function App() {
           <Route path="/view">
             <BookLibrary />
             <Search />
+          </Route>
+          <Route path="/about">
+            <About />
           </Route>
         </Switch>
       </div>
