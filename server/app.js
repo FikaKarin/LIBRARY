@@ -15,40 +15,6 @@ app.set('view engine', 'pug');
 
 app.use(cors());
 
-
-//***START TESTING ***//
-
-/**
- * All testing of error/validation and failure messeges
- */
-
-//testing failure message 
-// app.use(function(req, res, next) {
-//   setTimeout(next, 5000);
-// });
-
-//testing log errormessage 500 status
-// app.use(function(req, res, next) {
-//   res.sendStatus(500);
-// });
-
-
-//testing error at delete-function
-// app.use(function(req, res, next) {
-//   setTimeout(next, 1000);
-// });
-
-//testing if request method is DELETE, send response with error-message 500. Esle, go to next rendering.
-// app.use(function (req, res, next) {
-//   if (req.method === ’DELETE’) {
-//      res.sendStatus(500);
-//   } 
-//   else {
-//   next();}
-// });
-
-// *** END TESTING ***//
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

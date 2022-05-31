@@ -60,7 +60,7 @@ class BookRepository {
         let newBook = {
             author: book.author,
             title: book.title,
-            published: book.published
+            published: book.published,
         }
 
         this.pool.query("update books set ? where id = ?", [newBook, id], callback);

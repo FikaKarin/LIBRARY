@@ -191,12 +191,12 @@ class Book extends React.Component {
   }
 
   /**
-   * Render function with reload() after 2.8 sec
+   * Render function with reload() 
    * Gets text out of the controle
    * Value will be the corresponfding property
    * Key makes flashmessage re-rendered every time validationmessage changes
    * When new book is created, redirect to homepage
-   * @returns Form for saving a new book with input fields for author, title, published, comment, save-button
+   * @returns Form for saving a book with input fields for author, title, published, comment, save-button
    */
   render() {
     const reload = () => {
@@ -239,7 +239,7 @@ class Book extends React.Component {
             id="published"
           />
           <label htmlFor="comment"></label>
-          <h5>Comment from previous reader:</h5>
+          <h5>Comment from previous reader: <span>(cannot be edited!)</span></h5>
           <h3> </h3>
           <textarea
             value={this.state.the_comment}
@@ -249,7 +249,6 @@ class Book extends React.Component {
             id="comment"
           />
           <input
-            className="button-52"
             type="submit"
             value="Save"
             onClick={() => reload()}

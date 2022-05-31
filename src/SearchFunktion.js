@@ -24,7 +24,7 @@ export default function Search() {
         /**
          *Filters through book titles and authors in database 
          */
-        const filteredBooks = search.length === 0 ? books : books.filter(books => books.title.toLowerCase() && books.author.toLowerCase().includes(search.toLowerCase()))
+        const filteredBooks = search.length === 0 ? books : books.filter(books => books.title.toLowerCase().includes(search.toLowerCase()) && books.author.toLowerCase())
 
     return (
         <div className='searchList'>
