@@ -74,7 +74,7 @@ class BookLibrary extends React.Component {
   }
 
   /**
-   * This function renders and displays library so that the book list is updated    after alternations.
+   * This function renders and displays library so that the book list is updated after alternations.
    * @returns content
    */
   render() {

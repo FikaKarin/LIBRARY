@@ -12,7 +12,7 @@ const mysql = require('mysql');
 const db = require("../config/db");
 
 /**
- * connectionPool for creating a certain number of connections saving mySQL configuration to <connectionPool> variable for shorter syntax usage
+ * connectionPool for creating a certain number of connections saving mySQL configuration to connectionPool variable for shorter syntax usage
  */
 const connectionPool = {
 

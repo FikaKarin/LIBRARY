@@ -1,7 +1,5 @@
 /**
  * Class containing all CRUD API:s
- * save(), saving new book values, <title>, <author>, <published> together with foreign key <comment> values
- * pool() containing configuration to mySQL database
  * @constructor connectionPool, to be set as value of pool function
  */
 class BookRepository {
@@ -9,10 +7,19 @@ class BookRepository {
         this.connectionPool = connectionPool;
     } 
 
+    /**
+     * Containing configuration to mySQL database
+     */
     get pool() {
         return this.connectionPool.getPool();
     }
 
+    /**
+     * Function with API to save book to database
+     * @param {string} book 
+     * @param {number, string} callback 
+     * @param {object} newBook book author, title, publiched date and foreign key the_comment
+     */
     save(book, callback) {
 
         // book object without the_comment
@@ -47,15 +54,30 @@ class BookRepository {
         });
     }
 
+    /**
+     * Function with API to get book from database
+     * @param {number} id 
+     * @param {number, string} callback 
+     */
     get(id, callback) {
         this.pool.query("select books.id, books.author, books.title, books.published, comments.the_comment from books left join comments on books.id = comments.books_id where books.id = ? ", id, callback);
     }
 
+    /**
+     * Function with API to get all books from database
+     * @param {number, string} callback 
+     */
     getAll(callback) {
         this.pool.query('select books.id, books.author, books.title, books.published, comments.the_comment from books left join comments on books.id = comments.books_id', callback);
-
     }
 
+    /**
+     * Function with API to update book
+     * @param {number} id 
+     * @param {string} book 
+     * @param {number, string} callback 
+     * @param {object} newBook containing a new book with author, title, published date
+     */
     update(id, book, callback) {
         let newBook = {
             author: book.author,
@@ -66,6 +88,11 @@ class BookRepository {
         this.pool.query("update books set ? where id = ?", [newBook, id], callback);
     }
 
+    /**
+     * Function with API to delete book database
+     * @param {number} id 
+     * @param {number} callback 
+     */
     delete(id, callback) {
         this.pool.query('delete from books where id = ?', id, callback);
     }

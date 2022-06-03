@@ -4,6 +4,7 @@ import './SearchList.css';
 /**
  * Searchlist function mapping through database
  * @param {string} books 
+ * @param {function} map function mapping through all books in search via title and author
  * @returns list with books.id, books.author and books.title
  */
 export default function SearchList({books}) {

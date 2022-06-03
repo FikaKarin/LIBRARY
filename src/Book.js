@@ -42,7 +42,7 @@ class Book extends React.Component {
 
   /**
    * takes properties/attributes that can be passed in when we use Book component
-   * @param {*} props
+   * @param {number, string} props id, author, title, published, the_comment, warningCount
    */
   constructor(props) {
     super(props);
@@ -107,7 +107,7 @@ class Book extends React.Component {
   }
 
   /**
-   * Function that uses error messages from validation object if input fields in <Create> is not entered correct
+   * Function that uses error messages from validation object if input fields in Create is not entered correct
    * @returns true or false
    */
   validate() {
@@ -145,6 +145,9 @@ class Book extends React.Component {
 
     published += "-01-01";
 
+    /**
+     * @param {object} book id, author, title, published and foreign key: the_comment
+     */
     const book = {
       id: id,
       author: author,
@@ -153,9 +156,19 @@ class Book extends React.Component {
       the_comment: the_comment,
     };
 
+    /**
+     * Variable containing post request
+     */
     let updateFunc = axios.post;
+
+    /**
+     * Variable containing env database url
+     */
     let url = process.env.REACT_APP_SERVER_URL;
 
+    /**
+     * if there is id, use put method, and url variable gets adress + id
+     */
     if (id) {
       updateFunc = axios.put;
       url += "/" + id;
@@ -165,7 +178,8 @@ class Book extends React.Component {
 
     /**
      * Function for updating values of book
-     * Catching errors with warning <string>
+     * Catching errors with warning string
+     * @param {url, book} url for book id and book with updated values 
      */
     updateFunc(url, book)
       .then((result) => {
@@ -205,7 +219,9 @@ class Book extends React.Component {
       }, 2800);
     };
 
- 
+    /**
+     * If book is created, return to homepage
+     */
     if (this.state.created) {
       return <Redirect to="/view" />;
     }

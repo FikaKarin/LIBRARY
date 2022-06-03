@@ -1,6 +1,10 @@
 import React from 'react';
 import './Header.css';
 
+/**
+ * 
+ * @returns About information
+ */
 function About() {
     return (
     <div className='about'>
